@@ -35,7 +35,23 @@
             v-for="(photo, i) in selectedLocation.photos"
             :key="i"
           >
-            <img :src="photo" alt="Foto da viagem" style="width: 100%; max-height: 80vh; object-fit: contain; display: block; margin: 0 auto;" />
+            <div class="image-wrapper">
+              <v-progress-circular
+                v-if="loadingImages[i]"
+                indeterminate
+                color="primary"
+                size="48"
+                class="image-spinner"
+              ></v-progress-circular>
+              <img
+                :src="photo"
+                alt="Foto da viagem"
+                class="carousel-image"
+                :class="{ 'image-hidden': loadingImages[i] }"
+                @load="loadingImages[i] = false"
+                @error="loadingImages[i] = false"
+              />
+            </div>
           </v-carousel-item>
         </v-carousel>
 
@@ -82,6 +98,7 @@ const map = shallowRef<L.Map | null>(null)
 const dialog = ref(false)
 const isLoading = ref(false)
 const selectedLocation = ref<Location | null>(null)
+const loadingImages = ref<Record<number, boolean>>({})
 
 const locations: Location[] = [
   { 
@@ -177,6 +194,8 @@ const openLocationModal = async (loc: Location) => {
       const urls = await response.json()
       if (Array.isArray(urls) && urls.length > 0) {
         loc.photos = urls
+        // Reset loading state for each image
+        loadingImages.value = Object.fromEntries(urls.map((_: string, i: number) => [i, true]))
       } else {
         console.warn(`Nenhuma foto encontrada para o país: ${loc.name}`)
       }
@@ -248,5 +267,31 @@ onUnmounted(() => {
   .map-container {
     height: 400px;
   }
+}
+
+.image-wrapper {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+}
+
+.image-spinner {
+  position: absolute;
+}
+
+.carousel-image {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.3s ease;
+}
+
+.image-hidden {
+  opacity: 0;
 }
 </style>
