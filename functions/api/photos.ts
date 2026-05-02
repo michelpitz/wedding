@@ -49,7 +49,13 @@ export async function onRequest(context: any) {
     const data = await response.json();
     
     if (data.resources) {
-      const imageUrls = data.resources.map((res: any) => res.secure_url);
+      const imageUrls = data.resources.map((res: any) => {
+        // Adiciona transformações na URL do Cloudinary para otimizar tamanho e peso
+        // c_limit,w_800: limita a largura a 800px
+        // q_auto: otimiza a qualidade automaticamente (reduz MB)
+        // f_auto: converte para formatos modernos como WebP/AVIF se o navegador suportar
+        return res.secure_url.replace('/upload/', '/upload/c_limit,w_800,q_auto,f_auto/');
+      });
       return new Response(JSON.stringify(imageUrls), {
         headers: { 'Content-Type': 'application/json' }
       });
