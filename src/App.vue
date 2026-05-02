@@ -3,7 +3,7 @@
     <v-app-bar :elevation="isScrolled ? 2 : 0" :color="isScrolled ? 'white' : 'transparent'" fixed>
       <v-container class="d-flex align-center py-0">
         <v-app-bar-title class="font-weight-bold" :class="isScrolled ? 'text-primary' : 'text-white'" style="font-family: 'Playfair Display', serif !important;">
-          Michel & Carolina
+          Carolina & Michel
         </v-app-bar-title>
         <v-spacer></v-spacer>
         <div class="d-none d-sm-flex">
@@ -37,7 +37,7 @@
 
     <v-footer color="primary" class="text-center d-flex flex-column py-6">
       <div class="text-white mb-2" style="font-family: 'Playfair Display', serif !important; font-size: 1.5rem;">
-        Michel & Carolina
+        Carolina & Michel
       </div>
       <div class="text-white text-caption">
         &copy; {{ new Date().getFullYear() }} - Esperamos você no nosso grande dia!

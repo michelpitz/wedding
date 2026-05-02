@@ -8,13 +8,13 @@
     >
       <div class="text-white px-4">
         <h1 class="text-h3 text-sm-h2 font-weight-regular mb-4 font-italic" style="font-family: 'Playfair Display', serif !important;">
-          Michel Petry Pitz <br>&amp;<br> Carolina Lopes Monteiro
+          Carolina Lopes Monteiro <br>&amp;<br> Michel Petry Pitz
         </h1>
         <p class="text-h6 text-sm-h5 font-weight-light mb-6">
           03 de Julho de 2026, às 3:15pm. Ville d'Esch-sur-Alzette, Luxemburgo
         </p>
         <p class="text-subtitle-1 text-sm-h6 font-weight-light max-w-600 mx-auto">
-          Com a bênção de Deus e de nossos pais, convidamos você para celebrar o dia mais feliz de nossas vidas.
+          Convidamos você para celebrar conosco a união de nossas vidas.
         </p>
       </div>
     </v-img>
