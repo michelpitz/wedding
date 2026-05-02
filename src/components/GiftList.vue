@@ -17,9 +17,6 @@
             <v-card-subtitle class="text-primary font-weight-bold mt-1 text-h6">€ {{ gift.amount.toFixed(2).replace('.', ',') }} (R$ {{ Math.round(gift.amount * 5.85) }})</v-card-subtitle>
           </v-card-item>
           
-          <v-card-text class="flex-grow-1 text-grey-darken-1">
-            {{ gift.description }}
-          </v-card-text>
           
           <v-card-actions class="pa-4 pt-0">
             <v-btn
