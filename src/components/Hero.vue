@@ -11,7 +11,7 @@
           Carolina Lopes Monteiro <br>&amp;<br> Michel Petry Pitz
         </h1>
         <p class="text-h6 text-sm-h5 font-weight-light mb-6">
-          03 de Julho de 2026, às 3:15pm. Ville d'Esch-sur-Alzette, Luxemburgo
+          03 de Julho de 2026, às 3:15pm. City Hall, Hotel de Ville, Esch-sur-Alzette, Luxemburgo
         </p>
         <p class="text-subtitle-1 text-sm-h6 font-weight-light max-w-600 mx-auto">
           Convidamos você para celebrar conosco a união de nossas vidas.
