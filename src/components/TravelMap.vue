@@ -26,7 +26,7 @@
         </div>
         <v-carousel
           v-else-if="selectedLocation && selectedLocation.photos && selectedLocation.photos.length > 0"
-          height="500"
+          height="auto"
           hide-delimiter-background
           show-arrows="hover"
           theme="dark"
@@ -34,9 +34,9 @@
           <v-carousel-item
             v-for="(photo, i) in selectedLocation.photos"
             :key="i"
-            :src="photo"
-            cover
-          ></v-carousel-item>
+          >
+            <img :src="photo" alt="Foto da viagem" style="width: 100%; max-height: 80vh; object-fit: contain; display: block; margin: 0 auto;" />
+          </v-carousel-item>
         </v-carousel>
 
         <!-- <v-card-text class="pa-6 bg-white text-center">
@@ -57,7 +57,7 @@ interface Location {
   name: string
   coords: [number, number]
   photos: string[]
-  text: string
+  countryName: string
 }
 
 // Fix for default Leaflet icon paths in Vite
@@ -88,79 +88,79 @@ const locations: Location[] = [
     name: 'Brasil', 
     coords: [-14.2350, -51.9253], 
     photos: [], 
-    text: 'Nossa casa, onde tudo começou.' 
+    countryName: 'Brasil'
   },
   { 
     name: 'Alemanha', 
     coords: [51.1657, 10.4515], 
     photos: [], 
-    text: 'Muitas cervejas e salsichas.' 
+    countryName: 'Alemanha'
   },
   { 
     name: 'Luxemburgo', 
     coords: [49.8153, 6.1296], 
     photos: [], 
-    text: 'Um de nossos primeiros destinos juntos!' 
+    countryName: 'Luxemburgo'
   },
   { 
     name: 'França', 
     coords: [46.2276, 2.2137], 
     photos: [], 
-    text: 'Amor à primeira vista em Paris.' 
+    countryName: 'Franca'
   },
   { 
     name: 'Áustria', 
     coords: [47.5162, 14.5501], 
     photos: [], 
-    text: 'Paisagens alpinas deslumbrantes.' 
+    countryName: 'Austria'
   },
   { 
     name: 'Albânia', 
     coords: [41.1533, 20.1683], 
     photos: [], 
-    text: 'Um paraíso escondido nos Bálcãs.' 
+    countryName: 'Albania'
   },
   { 
     name: 'Filipinas', 
     coords: [12.8797, 121.7740], 
     photos: [], 
-    text: 'Praias paradisíacas e muita paz.' 
+    countryName: 'Filipinas'
   },
   { 
     name: 'Japão', 
     coords: [36.2048, 138.2529], 
     photos: [], 
-    text: 'Cultura incrível e comidas deliciosas.' 
+    countryName: 'Japao'
   },
   { 
     name: 'Finlândia', 
     coords: [61.9241, 25.7482], 
     photos: [], 
-    text: 'A magia da neve e a aurora boreal.' 
+    countryName: 'Finlandia'
   },
   { 
     name: 'Portugal', 
     coords: [39.3999, -8.2245], 
     photos: [], 
-    text: 'Vinhos excelentes e muita história.' 
+    countryName: 'Portugal'
   },
   { 
     name: 'Itália', 
     coords: [41.8719, 12.5674], 
     photos: [], 
-    text: 'Romance, massas e monumentos eternos.' 
+    countryName: 'Italia'
   },
   { 
     name: 'Espanha', 
     coords: [40.4637, -3.7492], 
     photos: [], 
-    text: 'Cultura vibrante e tapas inesquecíveis.' 
+    countryName: 'Espanha'
   },
   { 
     name: 'Suíça', 
     coords: [46.8182, 8.2275], 
     photos: [], 
-    text: 'Montanhas, lagos e muito chocolate.' 
+    countryName: 'Suica'
   }
 ]
 
@@ -171,7 +171,7 @@ const openLocationModal = async (loc: Location) => {
   isLoading.value = true
   try {
     // Chama a nossa Cloudflare Function (backend) que não sofre bloqueio de CORS
-    const response = await fetch(`/api/photos?country=${encodeURIComponent(loc.name)}`)
+    const response = await fetch(`/api/photos?country=${encodeURIComponent(loc.countryName)}`)
     
     if (response.ok) {
       const urls = await response.json()
@@ -247,10 +247,6 @@ onUnmounted(() => {
 @media (max-width: 600px) {
   .map-container {
     height: 400px;
-  }
-  
-  :deep(.v-carousel) {
-    height: 300px !important;
   }
 }
 </style>
