@@ -3,9 +3,7 @@
     <div class="text-center mb-12">
       <h2 class="text-h3 font-weight-regular mb-6" style="font-family: 'Playfair Display', serif !important;">Lista de Presentes</h2>
       <p class="text-body-1 text-grey-darken-1 max-w-800 mx-auto">
-        A sua presença é o nosso maior presente! Mas, como muitos de nossos amigos e familiares estão longe, 
-        preparamos uma lista de presentes para nos ajudar a construir nossa nova etapa nos ajudando a mobiliar o nosso novo lar. 
-        Preparamos algumas cotas de presentes para você escolher.
+        Para quem desejar contribuir com este novo capítulo, preparamos com carinho uma lista de presentes que nos ajudará a montar nosso primeiro lar.
       </p>
     </div>
 
@@ -14,7 +12,8 @@
         <v-card class="h-100 d-flex flex-column rounded-xl" elevation="2">
           <v-card-item class="pt-6">
             <v-card-title class="text-h6 font-weight-regular">{{ gift.title }}</v-card-title>
-            <v-card-subtitle class="text-primary font-weight-bold mt-1 text-h6">€ {{ gift.amount.toFixed(2).replace('.', ',') }} (R$ {{ Math.round(gift.amount * 5.85) }})</v-card-subtitle>
+            <v-card-subtitle v-if="gift.amount === 0" class="text-primary font-weight-bold mt-1"> {{ gift.description }}</v-card-subtitle>
+            <v-card-subtitle v-else class="text-primary font-weight-bold mt-1 text-h6">€ {{ gift.amount.toFixed(2).replace('.', ',') }} (R$ {{ Math.round(gift.amount * 5.85) }})</v-card-subtitle>
           </v-card-item>
           
           
@@ -127,93 +126,98 @@ const gifts = ref<Gift[]>([
   {
     id: 1,
     title: 'Abajur alto',
-    description: 'Para iluminar nossas noites de leitura.',
+    description: '',
     amount: 50
   },
   {
     id: 2,
     title: 'Travesseiros',
-    description: 'Para termos sonhos tranquilos.',
+    description: '',
     amount: 70
   },
   {
     id: 3,
     title: 'Mesa sacada',
-    description: 'Para nossos cafés da manhã ao ar livre.',
+    description: '',
     amount: 80
   },
   {
     id: 4,
-    title: 'Mesa da side table sala',
-    description: 'Apoio perfeito para nossa sala de estar.',
+    title: 'Mesa de centro',
+    description: '',
     amount: 90
   },
   {
     id: 5,
     title: 'Mesa de escritório',
-    description: 'Para o nosso cantinho de trabalho em casa.',
+    description: '',
     amount: 100
   },
   {
     id: 6,
     title: 'Sofá da sacada',
-    description: 'Para relaxarmos vendo a vista.',
+    description: '',
     amount: 100
   },
   {
     id: 7,
     title: 'Poltrona leitura',
-    description: 'Para o nosso momento de descanso.',
+    description: '',
     amount: 120
   },
   {
     id: 8,
     title: 'Roupa de cama de algodão egípcio',
-    description: '200 ou 300 fios para máximo conforto.',
+    description: '',
     amount: 180
   },
   {
     id: 9,
     title: 'Tapete da sala',
-    description: 'Para deixar nossa sala mais aconchegante.',
+    description: '',
     amount: 300
   },
   {
     id: 10,
     title: 'Cadeiras mesa de jantar',
-    description: 'Para receber nossos amigos com conforto.',
+    description: '',
     amount: 340
   },
   {
     id: 11,
     title: 'Cama',
-    description: 'Onde vamos recarregar nossas energias.',
+    description: '',
     amount: 450
   },
   {
     id: 12,
     title: 'Colchão',
-    description: 'Para termos o melhor sono.',
+    description: '',
     amount: 480
   },
   {
     id: 13,
     title: 'Aspirador Dyson',
-    description: 'Ajudando na limpeza com tecnologia.',
+    description: '',
     amount: 800
   },
   {
     id: 14,
     title: 'Sofá',
-    description: 'O coração da nossa sala de estar.',
+    description: '',
     amount: 1000
   },
   {
     id: 15,
     title: 'TV',
-    description: 'Para nossas maratonas de séries e filmes.',
+    description: '',
     amount: 1000
-  }
+  },  {
+    id: 16,
+    title: 'Presente livre',
+    description: 'Contribuição casa nova e lual de mel.',
+    amount: 0
+  },
 ])
 
 const dialog = ref(false)
